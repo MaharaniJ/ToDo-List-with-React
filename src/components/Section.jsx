@@ -4,7 +4,7 @@ import { toast } from "react-hot-toast";
 import Header from "./Header";
 import Task from "./Task";
 
-function Section({ status, tasks, todos, inProgress, closed, setTasks }) {
+function Section({ status, tasks, todos, inProgress, completed, setTasks }) {
 //   const [isOver, setIsOver] = useState(false);
 
   const [{ isOver }, drop] = useDrop(
@@ -43,10 +43,11 @@ function Section({ status, tasks, todos, inProgress, closed, setTasks }) {
     tasksToMap = inProgress;
   }
 
-  if (status === "closed") {
-    text = "Closed";
+  if (status === "completed") {
+    text = "Completed";
     bg = "bg-green-500";
-    tasksToMap = closed;
+    text = "Completed";
+    tasksToMap = completed;
   }
 
   return (

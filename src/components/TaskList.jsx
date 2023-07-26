@@ -6,19 +6,19 @@ import Section from "./Section";
 function TaskList({ tasks, setTasks }) {
   const [todos, setTodos] = useState([]);
   const [inProgress, setInProgress] = useState([]);
-  const [closed, setClosed] = useState([]);
+  const [completed, setCompleted] = useState([]);
 
   useEffect(() => {
     const isTodos = tasks.filter((task) => task.status === "todo");
     const isInProgress = tasks.filter((task) => task.status === "inprogress");
-    const isClosed = tasks.filter((task) => task.status === "closed");
+    const isCompleted = tasks.filter((task) => task.status === "completed");
 
     setTodos(isTodos);
     setInProgress(isInProgress);
-    setClosed(isClosed);
+    setCompleted(isCompleted);
   }, [tasks]);
 
-  const statuses = ["todo", "inprogress", "closed"];
+  const statuses = ["todo", "inprogress", "completed"];
 
   return (
     <div className="flex gap-16">
@@ -30,7 +30,7 @@ function TaskList({ tasks, setTasks }) {
           setTasks={setTasks}
           todos={todos}
           inProgress={inProgress}
-          closed={closed}
+          completed={completed}
         />
       ))}
     </div>
